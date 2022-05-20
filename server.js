@@ -7,7 +7,12 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.render('text.html');
+  try {
+    res.json('Successful Request');
+    res.status(200);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 })
 
 app.listen(PORT, () => {
