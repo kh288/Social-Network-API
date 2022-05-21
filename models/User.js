@@ -2,8 +2,7 @@ const { Schema, Types } = require('mongoose');
 
 const emailCheck = '/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/';
 
-const studentSchema = new Schema(
-  {
+const studentSchema = new Schema({
     studentId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
@@ -20,19 +19,16 @@ const studentSchema = new Schema(
       unique: true,
       validate: [emailCheck, 'Please enter a valid email'],
     },
-    thoughts: {
-      
-    },
-    friends: {
-
-    },
+    thoughts: [thoughtSchema],
+    friends: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }],
+  },{
+  toJSON: {
+    getters: true,
   },
-  {
-    toJSON: {
-      getters: true,
-    },
-    id: false,
-  }
-);
+  id: false,
+});
 
 module.exports = studentSchema;
