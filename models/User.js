@@ -1,14 +1,6 @@
 const { Schema, Types } = require('mongoose');
-const { isEmail} = require('validator');
 
-// username
-//   String
-//   Unique
-//   Required
-//   Trimmed
-function validEmail(email) {
-  return email;
-}
+const emailCheck = '/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/';
 
 const studentSchema = new Schema(
   {
@@ -26,7 +18,7 @@ const studentSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      validate:[isEmail, 'Please enter a valid email'],
+      validate: [emailCheck, 'Please enter a valid email'],
     },
     thoughts: {
       
