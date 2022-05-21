@@ -19,7 +19,10 @@ const studentSchema = new Schema({
       unique: true,
       validate: [emailCheck, 'Please enter a valid email'],
     },
-    thoughts: [thoughtSchema],
+    thoughts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Thought',
+    }],
     friends: [{
       type: Schema.Types.ObjectId,
       ref: 'User',
@@ -28,7 +31,6 @@ const studentSchema = new Schema({
   toJSON: {
     getters: true,
   },
-  id: false,
 });
 
 module.exports = studentSchema;
