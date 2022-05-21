@@ -1,12 +1,10 @@
 const { Schema, Types } = require('mongoose');
 
-const emailCheck = '/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/';
-
 const studentSchema = new Schema({
-    studentId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
+    // studentId: {
+    //   type: Schema.Types.ObjectId,
+    //   default: () => new Types.ObjectId(),
+    // },
     username: {
       type: String,
       unique: true,
@@ -17,7 +15,7 @@ const studentSchema = new Schema({
       type: String,
       required: true,
       unique: true,
-      validate: [emailCheck, 'Please enter a valid email'],
+      match: [/.+@.+\..+/, 'Please enter a valid email format'],
     },
     thoughts: [{
       type: Schema.Types.ObjectId,
