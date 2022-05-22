@@ -15,12 +15,22 @@ connection.once('open', async () => {
 
   // Create i amount of users
   for (let i = 0; i < 5; i++) {
-    users.push(generateUser());
-    thoughts.push(generateThought());
+    // users.push(generateUser());
+    // thoughts.push(generateThought());
+    const user = generateUser();
+    const username = user[0];
+    const email = user[1];
+    // const thought = generateUser();
+    users.push({
+      username,
+      email
+    });
   }
 
   // console.log(users);
   // console.log(thoughts);
 
   await User.collection.insertMany(users);
+  console.table(users);
+  console.log('Seeding Complete');
 });
