@@ -7,16 +7,14 @@ connection.on('error', (err) => err);
 connection.once('open', async () => {
   console.log('Connected');
 
-  // await User.deleteMany({});
-  // await Thought.deleteMany({});
+  await User.deleteMany({});
+  await Thought.deleteMany({});
 
   const users = [];
   const thoughts =[];
 
   // Create i amount of users
-  for (let i = 0; i < 5; i++) {
-    // users.push(generateUser());
-    // thoughts.push(generateThought());
+  for (let i = 0; i < 10; i++) {
     const user = generateUser();
     const username = user[0];
     const email = user[1];
@@ -31,6 +29,9 @@ connection.once('open', async () => {
   // console.log(thoughts);
 
   await User.collection.insertMany(users);
+
+  console.clear();
   console.table(users);
   console.log('Seeding Complete');
+  process.exit(0);
 });
