@@ -24,14 +24,21 @@ connection.once('open', async () => {
       email
     });
   }
-
+  for (let i = 0; i < 10; i++) {
+    const thought = generateThought();
+    thoughts.push({
+      thought
+    });
+  }
   // console.log(users);
   // console.log(thoughts);
 
   await User.collection.insertMany(users);
+  await Thought.collection.insertMany(thoughts);
 
   console.clear();
   console.table(users);
+  console.table(thoughts);
   console.log('Seeding Complete');
   process.exit(0);
 });

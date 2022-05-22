@@ -8,7 +8,7 @@ function convertHour() {
 }
 
 // MM/DD/YYYY HH:MMam
-const getCurrentTime = (
+const getTime = (
   (currentDate.getMonth() + 1) + '/' +
   currentDate.getDate() + '/' +
   currentDate.getFullYear() + ' ' +
@@ -18,6 +18,10 @@ const getCurrentTime = (
   convertHour()[1]
 );
 
+function getCurrentTime() {
+  return getTime();
+}
+
 // console.log(getCurrentTime);
 
-module.exports = {getCurrentTime};
+module.exports = { getCurrentTime };
