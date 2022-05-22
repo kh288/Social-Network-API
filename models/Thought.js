@@ -1,5 +1,4 @@
 const { Schema, model, Types } = require('mongoose');
-const userSchema = require('./User');
 const { getCurrentTime } = require('../util/helpers');
 
 const thoughtSchema = new Schema({
@@ -47,12 +46,6 @@ const reactionSchema = new Schema({
     default: Date.now,
     get: getCurrentTime,
   },
-});
-
-thoughtSchema
-  .virtual('reactionCount')
-  .get(function () {
-    return this.reactions.length;
 });
 
 const Thought = model('Thought', thoughtSchema);

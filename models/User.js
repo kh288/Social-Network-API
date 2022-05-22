@@ -1,6 +1,6 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
-const studentSchema = new Schema({
+const userSchema = new Schema({
     // studentId: {
     //   type: Schema.Types.ObjectId,
     //   default: () => new Types.ObjectId(),
@@ -27,8 +27,11 @@ const studentSchema = new Schema({
     }],
   },{
   toJSON: {
-    getters: true,
+    virtuals: true,
   },
+  id: false,
 });
 
-module.exports = studentSchema;
+const User = model('User', userSchema);
+
+module.exports = User;
