@@ -20,4 +20,4 @@ const getCurrentTime = (
 
 // console.log(getCurrentTime);
 
-module.exports = getCurrentTime;
+module.exports = {getCurrentTime};
