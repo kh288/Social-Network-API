@@ -90,7 +90,7 @@ function generateThought() {
   return thoughts[Math.floor(Math.random() * thoughts.length)];
 }
 
-console.log(generateUser());
-console.log(generateThought());
+// console.log(generateUser());
+// console.log(generateThought());
 
 module.exports = { generateUser, generateThought };
