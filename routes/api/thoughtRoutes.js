@@ -6,6 +6,9 @@ const {
   // createThought,
   // updateThought,
   // deleteThought
-} = require('../../controllers/thoughtController');
+} = require('../../controllers/thoughtController.js');
 
-router.route('/').get(getThoughts);
+router.route('/')
+  .get(getThoughts);
+
+module.exports = router;

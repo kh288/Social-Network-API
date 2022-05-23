@@ -1,7 +1,10 @@
-const { User, Thought } = require('../models');
+const { 
+  User, 
+  Thought 
+} = require('../models');
 
 const allUsers = async function() {
-  Users.aggregate()
+  User.aggregate()
     .count('userCount')
     .then((numberOfUsers) => numberOfUsers);
 }
@@ -21,16 +24,16 @@ module.exports = {
         return res.status(500).json(err);
       })
   },
-  getSingleUser(req, res) {
+  // getSingleUser(req, res) {
 
-  },
-  createUser(req, res) {
+  // },
+  // createUser(req, res) {
 
-  },
-  updateUser(req, res) {
+  // },
+  // updateUser(req, res) {
 
-  },
-  deleteUser(req, res) {
+  // },
+  // deleteUser(req, res) {
 
-  },
-}
+  // },
+};

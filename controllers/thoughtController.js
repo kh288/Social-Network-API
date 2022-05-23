@@ -1,4 +1,7 @@
-const { User, Thought } = require('../models');
+const { 
+  // User, 
+  Thought 
+} = require('../models');
 
 const allThoughts = async function() {
   allThoughts.aggregate()
@@ -19,18 +22,18 @@ module.exports = {
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
-      })
+      });
   },
-  getSingleThought(req, res){
+  // getSingleThought(req, res){
 
-  },
-  createThought(req, res) {
+  // },
+  // createThought(req, res) {
 
-  },
-  updateThought(req, res) {
+  // },
+  // updateThought(req, res) {
 
-  },
-  deleteThought(req, res) {
+  // },
+  // deleteThought(req, res) {
 
-  },
-}
+  // },
+};

@@ -8,4 +8,8 @@ const {
   // deleteUser
 } = require('../../controllers/userController');
 
-router.route('/').get(getUsers);
+// /api/users
+router.route('/')
+  .get(getUsers);
+
+module.exports = router;
