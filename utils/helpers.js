@@ -19,7 +19,7 @@ const getTime = (
 );
 
 function getCurrentTime() {
-  return getTime();
+  return getTime;
 }
 
 // console.log(getCurrentTime);

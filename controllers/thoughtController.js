@@ -1,23 +1,20 @@
-const { 
-  // User, 
-  Thought 
-} = require('../models');
+const { User, Thought } = require('../models');
 
-const allThoughts = async function() {
-  allThoughts.aggregate()
-    .count('thoughtCount')
-    .then((numberOfThoughts) => numberOfThoughts);
-}
+// const allThoughts = async function() {
+//   allThoughts.aggregate()
+//     .count('thoughtCount')
+//     .then((numberOfThoughts) => numberOfThoughts);
+// }
 
 module.exports = {
   getThoughts(req, res) {
-    Thought.find()
+    Thought.find({})
       .then(async(thoughts) => {
-        const thoughtObj = {
-          thoughts,
-          thoughtCount: await allThoughts(),
-        };
-        return res.json(thoughtObj);
+        // const thoughtObj = {
+        //   thoughts,
+        //   thoughtCount: await allThoughts(),
+        // };
+        return res.json(thoughts);
       })
       .catch((err) => {
         console.log(err);

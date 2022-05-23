@@ -12,6 +12,8 @@ const allUsers = async function() {
 module.exports = {
   getUsers(req, res) {
     User.find()
+      .populate("thoughts")
+      .populate("friends")
       .then(async(users) => {
         const userObj = {
           users,
@@ -26,6 +28,8 @@ module.exports = {
   },
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId})
+      .populate("thoughts")
+      // .populate("friends")
       .select('-__v')
       .then(async(user) => {
         !user
