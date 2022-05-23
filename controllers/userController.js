@@ -22,7 +22,7 @@ module.exports = {
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
-      })
+      });
   },
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId})
@@ -37,11 +37,18 @@ module.exports = {
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
-      })
+      });
   },
-  // createUser(req, res) {
-
-  // },
+  createUser(req, res) {
+    User.create(req.body)
+      .then((user) => {
+        res.json(user)
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
   // updateUser(req, res) {
 
   // },
