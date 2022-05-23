@@ -10,10 +10,9 @@ const allUsers = async function() {
 }
 
 module.exports = {
+  // Find all users
   getUsers(req, res) {
-    User.find()
-      .populate("thoughts")
-      .populate("friends")
+    User.find({})
       .then(async(users) => {
         const userObj = {
           users,
@@ -26,23 +25,24 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+  // View user based on an ID
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId})
+      .populate("friends")
       .populate("thoughts")
-      // .populate("friends")
       .select('-__v')
       .then(async(user) => {
         !user
           ? res.status(404).json({ message: 'No user with that ID found' })
-          : res.json({
-            user
-          });
+          : res.json(user);
       })
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);
       });
   },
+  // Create user
+    // Able to create based on username and email
   createUser(req, res) {
     User.create(req.body)
       .then((user) => {
@@ -53,6 +53,8 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+  //  Update user based on ID
+  //    Able to change username / email
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -62,16 +64,27 @@ module.exports = {
     .then(async(user) => {
       !user
         ? res.status(404).json({ message: 'No user with that ID found' })
-        : res.json({
-          user
-        });
+        : res.json({ user });
     })
     .catch((err) => {
       console.log(err);
       return res.status(500).json(err);
     });
   },
-  // deleteUser(req, res) {
-
-  // },
+  // Delete a user based on ID
+  deleteUser(req, res) {
+    User.findOneAndDelete(
+      { _id: req.params.userId }
+    )
+    .then(async(user) => {
+      !user
+        ? res.status(404).json({ message: 'No user with that ID found' })
+        : Thought.deleteMany({ _id: { $in: user.thoughts} });
+        res.json( { message: 'Successfully deleted', user });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json(err);
+    });
+  },
 };
