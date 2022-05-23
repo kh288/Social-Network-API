@@ -24,9 +24,21 @@ module.exports = {
         return res.status(500).json(err);
       })
   },
-  // getSingleUser(req, res) {
-
-  // },
+  getSingleUser(req, res) {
+    User.findOne({ _id: req.params.userId})
+      .select('-__v')
+      .then(async(user) => {
+        !user
+          ? res.status(404).json({ message: 'No user with that ID found' })
+          : res.json({
+            user
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      })
+  },
   // createUser(req, res) {
 
   // },
