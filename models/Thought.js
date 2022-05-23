@@ -20,6 +20,12 @@ const reactionSchema = new Schema({
     default: Date.now,
     get: getCurrentTime,
   },
+  },{
+  toJSON: {
+    virtuals: true,
+    getters: true,
+  },
+  id: false,
 });
 
 const thoughtSchema = new Schema({
