@@ -14,7 +14,7 @@ connection.once('open', async () => {
   const thoughts =[];
 
   // Create i amount of users
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 1; i++) {
     const user = generateUser();
     const username = user[0];
     const email = user[1];
@@ -24,7 +24,7 @@ connection.once('open', async () => {
       email
     });
   }
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 1; i++) {
     const thought = generateThought();
     thoughts.push({
       thought
