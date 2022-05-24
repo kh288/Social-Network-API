@@ -1,4 +1,5 @@
 # Social Network API
+### A demonstration MongoDB backend
 
 ## Table of Content 📕
 * [Description](#description)
@@ -10,14 +11,12 @@
 # Description 📝
 This is a simple a basic API framework for a social media platform. This backend application is powered by MongoDB and Mongoose. Also by Express and Node.js
 
-Deployed link: 
+Deployed link: https://kevins-social-media-api.herokuapp.com/api/users
 
 # Examples 
-Demo Video
+<p align="center">Video Demonstration</p>
 
-<iframe src="https://drive.google.com/file/d/1SHUBpgMkMS-hewyWTi5evrpo-HLxr6ws/preview" width="640" height="480"></iframe>
-
-<!-- https://watch.screencastify.com/v/8ywu8653AQ3CTm5iSVLZ -->
+[![Video Demonstration](/readme/00-video-preview.png)](https://watch.screencastify.com/v/8ywu8653AQ3CTm5iSVLZ)
 
 ![Example Image Description](/readme/01-all-users.png)
 ![Example Image Description](/readme/02-all-thoughts.png)
