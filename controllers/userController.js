@@ -105,6 +105,19 @@ module.exports = {
     });
   },
   removeFriend(req, res) {
-
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
+    )
+    .then(async(user) => {
+      !user
+        ? res.status(404).json({ message: 'No user with that ID found' })
+        : res.json( { message: 'Successfully Removed friend', user } );
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json(err);
+    });
   }
 };
