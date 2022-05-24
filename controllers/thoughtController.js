@@ -1,19 +1,9 @@
 const { User, Thought } = require('../models');
 
-const allThoughts = async function() {
-  allThoughts.aggregate()
-    .count('thoughtCount')
-    .then((numberOfThoughts) => numberOfThoughts);
-}
-
 module.exports = {
   getThoughts(req, res) {
     Thought.find({})
       .then(async(thoughts) => {
-        // const thoughtObj = {
-        //   thoughts,
-        //   thoughtCount: await allThoughts(),
-        // };
         return res.json(thoughts);
       })
       .catch((err) => {
@@ -39,7 +29,7 @@ module.exports = {
       .then(({ _id }) => {
         return User.findOneAndUpdate(
           { _id: req.body.userId },
-          { $push: {thoughts: _id } },
+          { $push: { thoughts: _id } },
           { new: true },
         );
       })
@@ -53,16 +43,29 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // updateThought(req, res) {
-
-  // },
+  updateThought(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $set: req.body },
+      { runValidators: true, New: true },
+    )
+    .then(async(thought) => {
+      !thought
+        ? res.status(404).json({ message: 'No thought with that ID found' })
+        : res.json("Successfully updated!");
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json(err);
+    });
+  },
   deleteThought(req, res) {
     Thought.findOneAndDelete(
       { _id: req.params.userId }
     )
     .then(async(thought) => {
       !thought
-        ? res.status(404).json({ message: 'No user with that ID found' })
+        ? res.status(404).json({ message: 'No thought with that ID found' })
         : User.findOneAndUpdate(
           { thoughts: req.params.thoughtId },
           { $pull: { thoughts: req.params } },

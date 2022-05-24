@@ -3,6 +3,7 @@ const {
   Thought 
 } = require('../models');
 
+// Group all users in a user array
 const allUsers = async function() {
   User.aggregate()
     .count('userCount')
