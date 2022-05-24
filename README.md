@@ -8,19 +8,27 @@
 * [License](#license)  
   
 # Description 📝
--
+This is a simple a basic API framework for a social media platform. This backend application is powered by MongoDB and Mongoose. Also by Express and Node.js
 
 Deployed link: 
 
 # Examples 
+Demo Video
 
-![Example Image Description](/readme/)
+<iframe src="https://drive.google.com/file/d/1SHUBpgMkMS-hewyWTi5evrpo-HLxr6ws/preview" width="640" height="480"></iframe>
+
+<!-- https://watch.screencastify.com/v/8ywu8653AQ3CTm5iSVLZ -->
+
+![Example Image Description](/readme/01-all-users.png)
+![Example Image Description](/readme/02-all-thoughts.png)
 
 # Install 💾
 Download or clone repository to use this application on local machine.
 Node.js and MongoDB are required for for this.
 
 To install necessary dependencies, navigate to the root directory and run the following command: `npm i` or `npm install`
+
+There is no seed for this file to run locally So you'll need to make your own users/thoughts to start off with.
 
 # Technology 🎛
 * Javascript
