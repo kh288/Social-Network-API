@@ -52,7 +52,7 @@ module.exports = {
     .then(async(thought) => {
       !thought
         ? res.status(404).json({ message: 'No thought with that ID found' })
-        : res.json("Successfully updated!");
+        : res.json({ message: 'Successfully Updated', thoughts: req.body });
     })
     .catch((err) => {
       console.log(err);
