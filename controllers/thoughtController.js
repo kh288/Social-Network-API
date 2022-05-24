@@ -86,7 +86,23 @@ module.exports = {
     )
     .then(async(thought) => {
       !thought
-        ? res.status(404).json({ message: 'No thought with that ID found' })
+        ? res.status(404).json({ message: 'No reaction with that ID found' })
+        : res.json(thought);
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.status(500).json(err);
+    });
+  },
+  deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { reactions: { reactionId: req.params.reactionId } } },
+      { runValidators: true, New: true },
+    )
+    .then(async(thought) => {
+      !thought
+        ? res.status(404).json({ message: 'No reaction with that ID found' })
         : res.json(thought);
     })
     .catch((err) => {
