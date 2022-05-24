@@ -11,12 +11,14 @@
 # Description 📝
 This is a simple a basic API framework for a social media platform. This backend application is powered by MongoDB and Mongoose. Also by Express and Node.js
 
-Deployed link: https://kevins-social-media-api.herokuapp.com/api/users
+### Deployed link: https://kevins-social-media-api.herokuapp.com/api/users
 
 # Examples 
 <p align="center">Video Demonstration</p>
 
 [![Video Demonstration](/readme/00-video-preview.png)](https://watch.screencastify.com/v/8ywu8653AQ3CTm5iSVLZ)
+
+ <p align="center">Screenshots</p>
 
 ![Example Image Description](/readme/01-all-users.png)
 ![Example Image Description](/readme/02-all-thoughts.png)
